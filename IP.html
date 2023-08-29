@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Internet Protocol</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="IP.css" rel="stylesheet">
+</head>
+<body class="body">
+    <section class="container">
+        <h1 class="h1">Internet Protocol</h1>
+            <div class="Nav">
+                <ul>
+                    <li><a href="Assignment 2.html">Home</a></li>
+                    <li><a href="Overview of WWW.html">Overview of WWW</a></li>
+                    <li><a href="HOTI.html">History of the Internet</a></li>
+                    <li><a href="WWW vs Internet.html">WWW vs Internet</a></li>
+                    <li><a href="EOTI.html">Evolution of the Internet</a></li>
+                    <li><a href="WAA.html">Web Application Architecture</a></li>
+                    <li><a href="CSASSE.html">Client- and Server-side Engineering</a></li>
+                </ul>
+            </div>
+        <h2 class="h2">There are 5 Internet Protocols</h2>
+        <div class="text">
+            <p><b>Internet Protocol (IP):</b> 
+                The Internet stack provides a connection-oriented reliable branch (TCP) and a connectionless unreliable branch (UDP) both build on top of the Internet Protocol. It is the first layer that introduces the virtual network abstraction which is the basic principle of the Internet model. All physical implementation details are hidden below the IP layer (even though it’s not quite true). The IP layer provides an unreliable, connectionless delivery system. The reason why it is unreliable stems from the fact the protocol does not provide any functionality for error recovery for datagrams that are either duplicated, lost, or arrive at the remote host in another order than they are sending. If no such errors occur in the physical layer, the IP protocol guarantees that the transmission is terminated successfully.
+                </p>
+        </div>
+        
+        <div class="text2">
+            <p><b>User Datagram Protocol (UDP)</b> 
+                UDP is a very thin protocol built on top of the Internet Protocol. The basic unit of data is a User datagram and the UDP protocol provides the same unreliable, connectionless service transferring user datagrams as the IP protocols do transferring its datagrams. The main difference is that the UDP protocol is an end-to-end protocol. That is, it contains enough information to transfer a user datagram from one process on the transmitting host to another process on the receiving host. The LENGTH field is the length of the user diagram including the header, that is the minimum value of LENGTH is 8bytes.
+                </p>
+        </div>
+
+        <div class="pic">
+            <img src="Table 1.jpg">
+        </div>
+
+        <div class="text3">
+            <p>  The <b>SOURCE PORT</b> and <b>DESTINATION PORT</b> are the connection between an IP address and a process running on a host. A network port is normally identified by an integer. However, the user datagram does not contain any IP address so how does the UDP protocol know when the destination is reached?<br>
+            <br>
+            When calculating the <b>CHECKSUM</b> header, the UDP protocol appends a 12-byte pseudo-header consisting of the <b>SOURCE IP-ADDRESS</b>, the <b>DESTINATION IP-ADDRESS</b>, and some additional fields.<br>
+            <br>
+            When a host receives a UDP datagram it takes the UDP header and creates a new pseudo-header using its own IP address as the <b>DESTINATION IP-ADDRESS</b> and the <b>SOURCE IP-ADDRESS</b> extracted from the IP datagram. Then it calculates a checksum and if it equals the UDP checksum, then the datagram has received the destination
+            </p>
+        </div>
+
+        <div class="text4">
+            <p><b>Transmission Control Protocol (TCP)</b>
+                Provides a full duplex, reliable, connection-oriented service to the application layer as indicated in the Internet Protocol Stack Figure. This section describes the basic principle of the TCP protocol and how it provides a reliable service to the application layer protocols.
+                The TCP protocol is a stream-oriented protocol. It is designed to provide the application layer software with a service to transfer large amounts of data in a reliable way. It establishes a full-duplex virtual circuit between the two transmitting hosts so that both hosts simultaneously can put data out on the Internet without specifying the destination host once the connection is established.
+            </p>
+        </div>
+
+        <div class="pic2">
+            <img src="Table 2.jpg">
+        </div>
+
+        <div class="text5">
+            <p><b>Transactional Transmission Control Protocol (T/TCP)</b>
+                The TCP protocol is a highly symmetric protocol in that both hosts can transmit and receive data simultaneously. However, not all applications are symmetrical by nature. A typical example is a client-server protocol such as the Domain Name Service. The Transactional Transmission Control Protocol (T/TCP) which is a very new protocol (July 1994) offers an alternative to TCP when high performance is required in client-server applications. Some of the requirements of a high-performance transaction-oriented protocol are listed below:<br>
+                <ul>
+                    <li>The interaction between the client and the server is based on a request followed by a response, which is a stateless approach.</li>
+                    <li>The protocol must guarantee that a transaction is carried out at most one time and any duplicate packets received by the server should be discarded.</li>
+                    <li>No explicit open or close procedure of the connection. This is opposite to TCP and the 3WHS as described above.</li>
+                    <li>The minimum transaction latency for a client should be Round Trip Time (RTT) + Server Processing Time (SPT). That is basically the same requirement as no explicit open or close procedure.</li>
+                    <li>The protocol should be able to handle a reliable minimum transaction of exactly 1 segment in both directions.   </li>
+                </ul>
+            </p>
+        </div>
+
+        
+        <div class="text6">
+            <p><b>TCP/IP and OSI/RM:</b> 
+                International Standards Organization (ISO) has designed the second dominating protocol layering scheme, called ISO Open System Interconnection Reference Model (OSI/RM). This section presents the OSI reference model and compares it to the TCP/IP protocol stack as illustrated in the figure.
+            </p>
+        </div>
+
+        <div class="pic3">
+            <img src="Table 3.jpg">
+        </div>
+
+        <div class="text7">
+            <p>
+                <ol>
+                    <li>Physical Layer
+                    Specifies the physical connection between the host computers and IMPs and how bits are transferred over a communication channel.</li>
+                    <li>Data Link Layer
+                    This layer specifies how data travels between IMPs using frames. Its main task is to change the service from the physical layer into a packet-oriented error-free transmission.</li>
+                    <li>Network Layer
+                    The frames from the Data Link Layer are organized into packets and directed through the network. The communication is still between IMPs.</li>
+                    <li>Transport Layer
+                    The first layer provides an end-to-end transport service. It ensures that the transferred data arrive correctly at the other end.</li>
+                    <li>Session Layer
+                    This layer specifies how two hosts can establish sessions where data can be transferred in both directions on a virtual connection between the two hosts.</li>
+                    <li>Presentation Layer
+                    The Presentation layer introduces a set of syntax and semantics of the information transmitted through the lower protocol layers.</li>
+                    <li>Application Layer
+                    This layer defines a platform-independent virtual network terminal so that application programs can exchange data regardless of the internal data representation used.</li>
+                </ol>
+            </p>
+        </div>
+    
+    </body>
+</html>
